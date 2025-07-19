@@ -92,7 +92,7 @@ interface Listing {
 interface BookingData {
     id: number;
     startDate: string; 
-    endDate: string; 
+    endDate: string; // End date
     numberOfGuests: number;
     purpose: "Personal" | "Campus_Recruitment";
     type: "AC" | "NonAC";
