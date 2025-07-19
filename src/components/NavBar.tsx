@@ -126,7 +126,7 @@ const NavBar: React.FC = () => {
 											{/* User Info */}
 											<div className="flex items-center space-x-4 mb-4">
 												<Avatar className="w-12 h-12">
-													{/* <AvatarImage src="https://github.com/shadcn.png" /> */}
+													{/* <AvatarImage src="https://github.com/shadcn.png /> */}
 													<AvatarFallback className="bg-gradient-to-br from-purple-500 to-blue-500 text-white text-lg">
 														{data?.data?.name?.charAt(0) || "U"}
 													</AvatarFallback>
