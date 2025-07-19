@@ -43,5 +43,5 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            pm2 restart kanchenjunga_frontend || pm2 start dist/index.js --name "kanchenjunga_frontend"
+            pm2 restart kanchenjunga_frontend || pm2 start npm --name "kanchenjunga_frontend" -- start
             pm2 save
