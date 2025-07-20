@@ -66,14 +66,14 @@ const About = () => {
             </span>
           </div>
 
-          <h1 className="jakarta-font text-4xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+          <h1 className="jakarta-font text-3xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
             Jalpaiguri Government Engineering College Alumni Build Multipurpose{" "}
             <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               "Kanchenjunga"
             </span>
           </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-xl text-justify text-gray-600 leading-relaxed max-w-4xl mx-auto">
             A Hub for Learning, Collaboration, and Community - Connecting past
             achievements with future innovations
           </p>
@@ -103,7 +103,7 @@ const About = () => {
         </div>
 
         {/* Basic History Section */}
-        <div className="bg-white rounded-3xl shadow-luxury p-12 border border-gray-100 mb-20">
+        <div className="bg-white text-justify rounded-3xl shadow-luxury md:p-12 p-8 border border-gray-100 mb-20">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="jakarta-font text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -195,7 +195,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-8">
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-100">
+              <div className="bg-gradient-to-br text-justify from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-100">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                   <Lightbulb className="w-8 h-8 text-indigo-600 mr-3" />
                   Development Programs
@@ -212,7 +212,7 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 border border-purple-100">
+              <div className="bg-gradient-to-br text-justify from-purple-50 to-pink-50 rounded-3xl p-8 border border-purple-100">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                   <Clock className="w-8 h-8 text-purple-600 mr-3" />
                   Alumni Engagement
@@ -279,7 +279,7 @@ const About = () => {
         </div>
 
         {/* Promoters Section */}
-        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-12 border border-indigo-100 mb-20">
+        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl md:p-12 p-8 border border-indigo-100 mb-20">
           <div className="text-center mb-12">
             <h2 className="jakarta-font text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Promoters of Kanchenjunga
@@ -325,7 +325,7 @@ const About = () => {
         </div>
 
         {/* Building Features Section */}
-        <div className="bg-white rounded-3xl shadow-luxury p-12 border border-gray-100">
+        <div className="bg-white rounded-3xl shadow-luxury p-8 md:p-12 border border-gray-100">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="jakarta-font text-4xl md:text-5xl font-bold text-gray-900 mb-4">

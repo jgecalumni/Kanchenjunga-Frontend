@@ -237,9 +237,9 @@ const Page: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-luxury p-12 border border-gray-100">
+            <div className="bg-white rounded-3xl shadow-luxury p-8 md:p-12 border border-gray-100">
               <div className="text-center mb-12">
-                <h2 className="jakarta-font text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                <h2 className="jakarta-font text-3xl md:text-5xl font-bold text-gray-900 mb-4">
                   About Kanchenjunga
                 </h2>
                 <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
@@ -247,7 +247,7 @@ const Page: React.FC = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  <p className="text-lg text-gray-700 leading-relaxed">
+                  <p className="text-lg text-justify text-gray-700 leading-relaxed">
                     Kanchenjunga is the brainchild of our own Alumni - the
                     Engineers of JGEC, who drive the Industry today. It is meant
                     to facilitate students and act as a convention centre.
@@ -273,7 +273,7 @@ const Page: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   {features.map((feature, index) => {
                     const IconComponent = feature.icon;
                     return (
@@ -323,7 +323,7 @@ const Page: React.FC = () => {
                   key={index}
                   className="pl-4 md:basis-1/2 lg:basis-1/3"
                 >
-                  <div className="relative h-80 rounded-2xl overflow-hidden group">
+                  <div className="relative md:h-80 h-60 rounded-2xl overflow-hidden group">
                     <Image
                       src={image.link}
                       alt="Gallery image"
