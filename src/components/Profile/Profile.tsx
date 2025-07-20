@@ -120,9 +120,9 @@ const Profile = () => {
 		const res = await logout();
 		if (res.data?.success) {
 			toast.success(res.data.message);
-			router.replace("/");
+			router.refresh();
+			router.push("/");
 		}
-		refetch();
 	};
 
 	const handleSubmit = async (values: any) => {
