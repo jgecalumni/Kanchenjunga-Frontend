@@ -114,7 +114,7 @@ const NavBar: React.FC = () => {
 								<HoverCard>
 									<HoverCardTrigger asChild>
 										<Avatar className="cursor-pointer ring-2 ring-white/30 hover:ring-purple-400 transition-all duration-50 w-10 h-10">
-											{/* <AvatarImage src="https://github.com/shadcn.png" /> */}
+											{/* <AvatarImage src="https://github.com/shadcn.png"/> */}
 											<AvatarFallback className="bg-gradient-to-br from-purple-500 to-blue-500 text-white">
 												{data?.data?.name?.charAt(0) || "U"}
 											</AvatarFallback>
