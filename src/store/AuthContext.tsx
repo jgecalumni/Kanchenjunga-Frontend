@@ -31,6 +31,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 	useEffect(() => {
 		refreshTokenFromCookie(); // on first load
+		const cookieToken = Cookies.get("token") || null;
+		console.log(cookieToken);
 	}, []);
 
 	return (

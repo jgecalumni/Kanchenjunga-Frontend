@@ -110,7 +110,7 @@ const NavBar: React.FC = () => {
 
 						{/* Auth Section */}
 						<div className="hidden md:flex items-center space-x-4">
-							{token ? (
+							{data ? (
 								<HoverCard>
 									<HoverCardTrigger asChild>
 										<Avatar className="cursor-pointer ring-2 ring-white/30 hover:ring-purple-400 transition-all duration-50 w-10 h-10">
@@ -250,7 +250,7 @@ const NavBar: React.FC = () => {
 
 						{/* Footer */}
 						<div className="p-6 border-t border-gray-200">
-							{token ? (
+							{data ? (
 								<div className="space-y-4">
 									<div className="flex items-center space-x-3">
 										<Avatar className="w-10 h-10">

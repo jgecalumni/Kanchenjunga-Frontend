@@ -64,7 +64,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
 	images,
 	type,
 }) => {
-	const { token } = useAuth();
+	const { data } = useAuth();
 	const [open, setOpen] = useState(false);
 	const amenities = [
 		"Free Wi-Fi",
@@ -195,7 +195,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
 										</Button>
 									</Link>
 
-									{token ? (
+									{data ? (
 										<Link href={`/rooms/${id}`}>
 											<Button
 												size="sm"
