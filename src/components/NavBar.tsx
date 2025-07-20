@@ -54,8 +54,7 @@ const NavBar: React.FC = () => {
 		const res = await logout();
 		if (res) {
 			toast.success("Logout Successful");
-			router.refresh();
-			router.push("/");
+			window.location.href = "/";
 		}
 	};
 

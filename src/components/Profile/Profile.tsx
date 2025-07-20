@@ -120,8 +120,7 @@ const Profile = () => {
 		const res = await logout();
 		if (res.data?.success) {
 			toast.success(res.data.message);
-			router.refresh();
-			router.push("/");
+			window.location.href = "/";
 		}
 	};
 
