@@ -27,7 +27,7 @@ const NavBar: React.FC = () => {
 	const pathname = usePathname();
 	const [changeBack, setChangeBack] = useState(pathname !== "/");
 	const [openDrawer, setOpenDrawer] = useState(false);
-	const { token, data, refreshTokenFromCookie } = useAuth();
+	const { refetch, data } = useAuth();
 	const [logout, { isLoading }] = useLogoutMutation();
 
 	const NavLinks = [
@@ -56,7 +56,7 @@ const NavBar: React.FC = () => {
 			toast.success("Logout Successful");
 			router.replace("/");
 		}
-		refreshTokenFromCookie();
+		refetch();
 	};
 
 	return (
