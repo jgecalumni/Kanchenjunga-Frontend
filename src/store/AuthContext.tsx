@@ -23,6 +23,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const [token, setToken] = useState<string | null>(null);
 	const refreshTokenFromCookie = () => {
 		const cookieToken = Cookies.get("token") || null;
+		console.log(cookieToken);
+		
 		setToken(cookieToken);
 		refetch();
 	};

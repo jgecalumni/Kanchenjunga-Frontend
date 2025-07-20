@@ -41,6 +41,7 @@ export const baseApi = createApi({
 				url: "/auth/login",
 				method: "POST",
 				body: data,
+				credentials:"include"
 			}),
 			invalidatesTags: ["login"],
 		}),
