@@ -267,6 +267,13 @@ const NavBar: React.FC = () => {
 											</p>
 										</div>
 									</div>
+									<Link
+										href="/profile"
+										onClick={() => setOpenDrawer(false)}
+										className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+										<CgProfile className="text-lg text-purple-600" />
+										<span className="text-gray-700">Profile</span>
+									</Link>
 									<Button
 										onClick={handleLogout}
 										variant="ghost"
