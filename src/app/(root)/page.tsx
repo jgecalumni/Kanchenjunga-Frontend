@@ -115,11 +115,11 @@ const Page: React.FC = () => {
 
             {/* Heading */}
             <h1 className="jakarta-font text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Experience comfort,{" "}
+              Welcome to Kanchenjunga {" "}
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                connection,
+                convention
               </span>{" "}
-              and nostalgia
+              centre
             </h1>
 
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">

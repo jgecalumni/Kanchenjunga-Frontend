@@ -43,6 +43,7 @@ import { Loader2, UserCheck } from "lucide-react";
 import { useAuth } from "@/store/AuthContext";
 import Loader from "@/components/Loader";
 import { Badge } from "@/components/ui/badge";
+import { DateTimePicker } from "@/components/Modals/DateTime";
 
 declare global {
 	interface Window {
@@ -93,6 +94,8 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 			purpose: "",
 		},
 		onSubmit: async (values) => {
+			console.log(values);
+
 			const res = await checkAvailable({ ...values, id }).unwrap();
 			if (res.success) {
 				toast.success(res.message);
@@ -206,8 +209,6 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 						razorpay_signature: response.razorpay_signature,
 					},
 				};
-				console.log(response);
-
 				try {
 					const bookingRes = await createBooking(bookingPayload).unwrap();
 					if (bookingRes.success) {
@@ -321,7 +322,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 					</div>
 
 					{/* Booking Form */}
-					<Card className="w-full lg:w-[400px] shadow-xl">
+					<Card className="w-full lg:w-[450px] shadow-xl">
 						<CardContent className="p-6 space-y-4">
 							<div>
 								<div className="flex gap-1 items-center">
@@ -337,27 +338,37 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 
 							<form className="space-y-3">
 								<div
-									className={`grid grid-cols-2 gap-3 ${
+									className={`grid md:grid-cols-2 gap-3 ${
 										isRoomAvailable ? "hidden" : ""
 									}`}>
 									<div>
 										<Label className="mb-1">Check In</Label>
-										<Input
+										{/* <Input
 											type="date"
 											name="startDate"
 											className="w-full rounded-xl border-gray-200 focus:border-purple-500"
 											value={formik.values.startDate}
 											onChange={formik.handleChange}
+										/> */}
+										<DateTimePicker
+											value={formik.values.startDate}
+											onChange={(date) =>
+												formik.setFieldValue("startDate", date)
+											}
 										/>
 									</div>
 									<div>
 										<Label className="mb-1">Check Out</Label>
-										<Input
+										{/* <Input
 											type="date"
 											name="endDate"
 											className="w-full rounded-xl border-gray-200 focus:border-purple-500"
 											value={formik.values.endDate}
 											onChange={formik.handleChange}
+										/> */}
+										<DateTimePicker
+											value={formik.values.endDate}
+											onChange={(date) => formik.setFieldValue("endDate", date)}
 										/>
 									</div>
 								</div>

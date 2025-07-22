@@ -27,6 +27,7 @@ import {
 	Search,
 } from "lucide-react";
 import { useGetListingsQuery } from "@/store/features/rooms";
+import Loader from "../Loader";
 
 interface RoomCardProps {
 	id: number;
@@ -266,6 +267,9 @@ const Rooms: React.FC = () => {
 	//       return 0;
 	//   }
 	// });
+	if (!data) {
+		return <Loader />;
+	}
 
 	return (
 		<div className="min-h-screen bg-gray-50 pt-20">
