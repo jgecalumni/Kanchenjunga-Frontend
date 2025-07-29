@@ -403,8 +403,14 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 										</SelectTrigger>
 										<SelectContent>
 											<SelectGroup>
-												<SelectItem value="AC">AC</SelectItem>
-												<SelectItem value="NonAC">Non AC</SelectItem>
+												{room.type == "NonAC" ? (
+													<SelectItem value="NonAC">Non AC</SelectItem>
+												) : (
+													<>
+														<SelectItem value="AC">AC</SelectItem>
+														<SelectItem value="NonAC">Non AC</SelectItem>
+													</>
+												)}
 											</SelectGroup>
 										</SelectContent>
 									</Select>
