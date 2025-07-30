@@ -53,7 +53,11 @@ declare global {
 interface RoomDetailsProps {
 	params: Promise<{ id: string }>;
 }
-
+const parseGuestCount = (guestStr: string) => {
+	const match = guestStr.match(/(\d+)A\+(\d+)C/);
+	if (!match) return { adults: 2, children: 0 };
+	return { adults: parseInt(match[1]), children: parseInt(match[2]) };
+};
 const RoomDetails: React.FC<RoomDetailsProps> = ({
 	params,
 }: RoomDetailsProps) => {
@@ -89,27 +93,27 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 		initialValues: {
 			startDate: "",
 			endDate: "",
-			guests: 1,
+			guests: "",
 			type: "",
 			purpose: "",
 		},
 		onSubmit: async (values) => {
-			console.log(values);
 
 			const res = await checkAvailable({ ...values, id }).unwrap();
 			if (res.success) {
 				toast.success(res.message);
 				setIsRoomAvailable(true);
 
-				const nights = calculateNights(values.startDate, values.endDate);
-				let pricePerNight =
-					values.guests === 1 ? room?.singleOccupancy : room?.doubleOccupancy;
+				// const nights = calculateNights(values.startDate, values.endDate);
+				// let pricePerNight =
+				// 	values.guests === 1 ? room?.singleOccupancy : room?.doubleOccupancy;
 
-				if (nights > 0 && pricePerNight) {
-					setTotalCost(nights * pricePerNight);
-				} else {
-					setTotalCost(0);
-				}
+				// if (nights > 0 && pricePerNight) {
+				// 	setTotalCost(nights * pricePerNight);
+				// } else {
+				// 	setTotalCost(0);
+				// }
+				calculateTotalCost(values);
 			}
 		},
 	});
@@ -118,6 +122,8 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 		const nights = calculateNights(values.startDate, values.endDate);
 		if (nights <= 0) return setTotalCost(0);
 
+		const { adults, children } = parseGuestCount(values.guests);
+
 		let basePrice = 0;
 		let extraCharge = 0;
 
@@ -125,16 +131,17 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 			basePrice = 500;
 		} else {
 			basePrice =
-				values.guests === 1
-					? room?.singleOccupancy ?? 0
-					: room?.doubleOccupancy ?? 0;
+				adults === 1 ? room?.singleOccupancy ?? 0 : room?.doubleOccupancy ?? 0;
+
 			if (values.type === "AC") {
-				extraCharge = values.guests === 1 ? 400 * nights : 500 * nights;
+				extraCharge = adults === 1 ? 400 * nights : 500 * nights;
 			}
+
 		}
 
-		const cost = basePrice * nights + extraCharge;
-		setTotalCost(cost);
+		const total = basePrice * nights + extraCharge;
+		
+		setTotalCost(total);
 	};
 
 	const [
@@ -373,22 +380,25 @@ const RoomDetails: React.FC<RoomDetailsProps> = ({
 									</div>
 								</div>
 								<div>
-									<Label className="mb-1">Guests (Max 2)</Label>
-									<Input
-										type="number"
-										name="guests"
-										min={1}
-										max={2}
-										className="w-full rounded-xl border-gray-200 focus:border-purple-500"
+									<Label className="mb-1">Guests</Label>
+									<Select
 										value={formik.values.guests}
-										onChange={(e) => {
-											formik.handleChange(e);
-											calculateTotalCost({
-												...formik.values,
-												guests: parseInt(e.target.value),
-											});
-										}}
-									/>
+										onValueChange={(val) =>{
+											formik.setFieldValue("guests", val),
+											calculateTotalCost({ ...formik.values, guests:val });
+										}}>
+										<SelectTrigger className="h-12 w-full rounded-xl border-gray-200 focus:border-purple-500">
+											<SelectValue placeholder="Select guests" />
+										</SelectTrigger>
+										<SelectContent>
+											<SelectItem value="1A+0C">1 Adult</SelectItem>
+											<SelectItem value="2A+0C">2 Adults</SelectItem>
+											<SelectItem value="2A+1C">2 Adults + 1 Child</SelectItem>
+											<SelectItem value="2A+2C">
+												2 Adults + 2 Children
+											</SelectItem>
+										</SelectContent>
+									</Select>
 								</div>
 								<div className={!isRoomAvailable ? "hidden w-full" : "w-full"}>
 									<Label className="mb-1">Room Type</Label>
